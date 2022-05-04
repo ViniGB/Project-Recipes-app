@@ -1,5 +1,5 @@
 import React from 'react';
-import Routes from './components/Routes';
+import Routes from './Routes';
 import RecipeAppProvider from './context/RecipeAppProvider';
 
 function App() {

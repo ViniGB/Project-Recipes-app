@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, useLocation } from 'react-router-dom';
 import { fetchFoodById } from '../requisitions/detailsPagesAPIs';
 import DetailsPagesHeader from '../components/DetailsPagesHeader';
 import RecipeContext from '../context/RecipeAppContext';
 import { setIngredientsArray, setMeasuresArray } from '../helpers/setIngredientsArray';
 import { handleMealStorage } from '../helpers/handleProgressStorage';
+import { addLocalStorageDoneRecipe, setDoneRecipe } from '../helpers/setDoneRecipe';
 import './FoodInProgress.css';
 
 function FoodInProgress() {
@@ -15,18 +16,26 @@ function FoodInProgress() {
   const [ingredientMeasures, setIngredientMeasures] = useState([]);
 
   const { setDataById } = useContext(RecipeContext);
+  const location = useLocation();
+  const { pathname } = location;
 
   const { id } = useParams();
   const history = useHistory();
 
   useEffect(() => {
-    fetchFoodById(id).then((dataById) => {
-      setDetailsData(dataById);
-      setDataById(dataById);
-      setIngredientNames(setIngredientsArray(dataById));
-      setIngredientMeasures(setMeasuresArray(dataById));
+    fetchFoodById(id).then((recipe) => {
+      setDetailsData(recipe);
+      setDataById(recipe);
+      setIngredientNames(setIngredientsArray(recipe));
+      setIngredientMeasures(setMeasuresArray(recipe));
     });
     const localMeals = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    const localMealsDone = JSON.parse(localStorage.getItem('doneRecipes'));
+    if (localMealsDone === null) {
+      localStorage
+        .setItem('doneRecipes', JSON.stringify([]));
+      setCompletedIngredients([]);
+    }
     if (localMeals === null) {
       localStorage
         .setItem('inProgressRecipes', JSON.stringify({ cocktails: {}, meals: {} }));
@@ -61,6 +70,13 @@ function FoodInProgress() {
     } else {
       setDisabledFinishButton(true);
     }
+  };
+
+  const handleFinish = () => {
+    const storagedDoneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+    const doneRecipe = setDoneRecipe(pathname, detailsData);
+    addLocalStorageDoneRecipe(doneRecipe, storagedDoneRecipes, pathname, id);
+    history.push('/done-recipes');
   };
 
   return (detailsData.length === 1
@@ -105,7 +121,7 @@ function FoodInProgress() {
           type="button"
           data-testid="finish-recipe-btn"
           disabled={ disabledFinishButton }
-          onClick={ () => history.push('/done-recipes') }
+          onClick={ handleFinish }
         >
           Finish Recipe
         </button>

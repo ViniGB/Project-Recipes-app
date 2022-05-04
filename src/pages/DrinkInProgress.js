@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams, useHistory, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useHistory } from 'react-router-dom';
 import DetailsPagesHeader from '../components/DetailsPagesHeader';
 import RecipeContext from '../context/RecipeAppContext';
 import { setIngredientsArray, setMeasuresArray } from '../helpers/setIngredientsArray';
@@ -15,13 +15,12 @@ function DrinkInProgress() {
   const [ingredientNames, setIngredientNames] = useState([]);
   const [ingredientMeasures, setIngredientMeasures] = useState([]);
 
-  const { dataById, setDataById } = useContext(RecipeContext);
+  const { setDataById } = useContext(RecipeContext);
 
   const { id } = useParams();
   const history = useHistory();
   const location = useLocation();
   const { pathname } = location;
-  const doneRecipe = setDoneRecipe(pathname, dataById);
 
   useEffect(() => {
     fetchDrinkById(id).then((recipe) => {
@@ -32,7 +31,12 @@ function DrinkInProgress() {
     });
 
     const localCocktails = JSON.parse(localStorage.getItem('inProgressRecipes'));
-
+    const localDrinksDone = JSON.parse(localStorage.getItem('doneRecipes'));
+    if (localDrinksDone === null) {
+      localStorage
+        .setItem('doneRecipes', JSON.stringify([]));
+      setCompletedIngredients([]);
+    }
     if (localCocktails === null) {
       localStorage
         .setItem('inProgressRecipes', JSON.stringify({ cocktails: {}, meals: {} }));
@@ -71,7 +75,9 @@ function DrinkInProgress() {
   };
 
   const handleFinish = () => {
-    addLocalStorageDoneRecipe(doneRecipe);
+    const storagedDoneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+    const doneRecipe = setDoneRecipe(pathname, detailsData);
+    addLocalStorageDoneRecipe(doneRecipe, storagedDoneRecipes, pathname, id);
     history.push('/done-recipes');
   };
 

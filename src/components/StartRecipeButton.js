@@ -1,4 +1,3 @@
-// import React from 'react';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useHistory, useParams } from 'react-router-dom';
 import defineProgressRecipe from '../helpers/setStartRecipeButton';
@@ -16,7 +15,8 @@ function StartRecipeButton() {
 
   useEffect(() => {
     if (doneRecipes) {
-      const checkRecipeById = doneRecipes.some((recipe) => recipe.id === Number(currId));
+      const checkRecipeById = doneRecipes
+        .some((recipe) => Number(recipe.id) === Number(currId));
       setRecipeDone(checkRecipeById);
     }
     defineProgressRecipe(pathname, currId, setProgressRecipe);
@@ -51,7 +51,6 @@ function StartRecipeButton() {
       </button>
     );
   }
-
   return (
     ''
   );
