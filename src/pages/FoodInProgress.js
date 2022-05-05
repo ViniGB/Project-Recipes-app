@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams, useHistory, useLocation } from 'react-router-dom';
-import { fetchFoodById } from '../requisitions/detailsPagesAPIs';
-import DetailsPagesHeader from '../components/DetailsPagesHeader';
+import { fetchFoodById } from '../services/detailsPagesAPIs';
+import DetailsPagesHeader from '../components/generics/details/DetailsPagesHeader';
 import RecipeContext from '../context/RecipeAppContext';
 import { setIngredientsArray, setMeasuresArray } from '../helpers/setIngredientsArray';
 import { handleMealStorage } from '../helpers/handleProgressStorage';
 import { addLocalStorageDoneRecipe, setDoneRecipe } from '../helpers/setDoneRecipe';
-import './FoodInProgress.css';
 
 function FoodInProgress() {
   const [completedIngredients, setCompletedIngredients] = useState([]);

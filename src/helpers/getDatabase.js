@@ -1,4 +1,4 @@
-import { fetchFood, fetchDrink } from '../requisitions/apiRecipes';
+import { fetchFood, fetchDrink } from '../services/httpsApiRecipes';
 
 const TWELVE = 12;
 

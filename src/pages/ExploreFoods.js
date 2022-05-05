@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { surpriseFood } from '../requisitions/apiRecipes';
+import Header from '../components/generics/header/Header';
+import Footer from '../components/generics/Footer';
+import { surpriseFood } from '../services/httpsApiRecipes';
 
 function ExploreFoods() {
   const history = useHistory();

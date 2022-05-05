@@ -1,9 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import RecipeContext from '../context/RecipeAppContext';
-import shareIcon from '../images/shareIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
-import './FavoriteCards.css';
+import RecipeContext from '../../context/RecipeAppContext';
+import shareIcon from '../../images/shareIcon.svg';
+import blackHeartIcon from '../../images/blackHeartIcon.svg';
 
 const copy = require('clipboard-copy');
 

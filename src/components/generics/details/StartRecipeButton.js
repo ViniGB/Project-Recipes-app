@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useHistory, useParams } from 'react-router-dom';
-import defineProgressRecipe from '../helpers/setStartRecipeButton';
-import './StartRecipeButton.css';
+import defineProgressRecipe from '../../../helpers/setStartRecipeButton';
 
 function StartRecipeButton() {
   const [recipeDone, setRecipeDone] = useState(false);

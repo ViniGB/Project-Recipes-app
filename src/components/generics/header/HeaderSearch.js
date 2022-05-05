@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import RecipeContext from '../context/RecipeAppContext';
-import getDatabase from '../helpers/getDatabase';
+import RecipeContext from '../../../context/RecipeAppContext';
+import getDatabase from '../../../helpers/getDatabase';
 
 function Search() {
   const [radioValue, setRadioValue] = useState('');

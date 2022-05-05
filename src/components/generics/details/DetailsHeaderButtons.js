@@ -1,16 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import handleUrlCopy from '../helpers/detailsHeaderHelpers';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
-import './DetailsHeaderButtons.css';
-import RecipeContext from '../context/RecipeAppContext';
+import handleUrlCopy from '../../../helpers/detailsHeaderHelpers';
+import shareIcon from '../../../images/shareIcon.svg';
+import whiteHeartIcon from '../../../images/whiteHeartIcon.svg';
+import blackHeartIcon from '../../../images/blackHeartIcon.svg';
+import RecipeContext from '../../../context/RecipeAppContext';
 import {
   setFavoriteRecipe,
   addOrRemoveLocalStorageRecipe,
   setFavoriteIconColor,
-} from '../helpers/setFavoriteRecipe';
+} from '../../../helpers/setFavoriteRecipe';
 
 function DetailsHeaderButtons() {
   const [isLinkCopied, setLinkCopied] = useState(false);

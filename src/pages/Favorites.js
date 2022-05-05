@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../components/Header';
-import DoneAndFavoriteFilters from '../components/Done&FavoriteFilters';
-import FavoriteCards from '../components/FavoriteCards';
+import Header from '../components/generics/header/Header';
+import DoneAndFavoriteFilters from '../components/generics/Done&FavoriteFilters';
+import FavoriteCards from '../components/generics/FavoriteCards';
 
 function Favorites() {
   return (

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import { fetchDrinkById, fetchFoodById } from '../requisitions/detailsPagesAPIs';
-import './DetailsPagesHeader.css';
+import { fetchDrinkById, fetchFoodById } from '../../../services/detailsPagesAPIs';
 import DetailsHeaderButtons from './DetailsHeaderButtons';
 
 function DetailsPagesHeader() {

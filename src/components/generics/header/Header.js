@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import Search from './HeaderSearch';
-import profileIcon from '../images/profileIcon.svg';
-import searchIcon from '../images/searchIcon.svg';
-import './Header.css';
-import { getTestTitle, getSearchButton } from '../helpers/getTitle';
+import profileIcon from '../../../images/profileIcon.svg';
+import searchIcon from '../../../images/searchIcon.svg';
+import { getTestTitle, getSearchButton } from '../../../helpers/getTitle';
 
 function Header() {
   const [title, setTitle] = useState('');

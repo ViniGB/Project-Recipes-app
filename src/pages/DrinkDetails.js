@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchDrinkById } from '../requisitions/detailsPagesAPIs';
+import { fetchDrinkById } from '../services/detailsPagesAPIs';
 import { setIngredientsArray, setMeasuresArray } from '../helpers/setIngredientsArray';
-import './DrinkDetails.css';
-import StartRecipeButton from '../components/StartRecipeButton';
-import RecommendedRecipes from '../components/RecommendedRecipes';
-import DetailsPagesHeader from '../components/DetailsPagesHeader';
+import StartRecipeButton from '../components/generics/details/StartRecipeButton';
+import RecommendedRecipes from '../components/generics/details/RecommendedRecipes';
+import DetailsPagesHeader from '../components/generics/details/DetailsPagesHeader';
 import RecipeContext from '../context/RecipeAppContext';
 
 function DrinkDetails() {

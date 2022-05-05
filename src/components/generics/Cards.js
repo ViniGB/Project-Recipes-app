@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import RecipeContext from '../context/RecipeAppContext';
+import RecipeContext from '../../context/RecipeAppContext';
 
 function Cards() {
   const {

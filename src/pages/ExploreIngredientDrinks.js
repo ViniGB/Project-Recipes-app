@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { fetchIngredientsDrinks } from '../requisitions/apiRecipes';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { fetchIngredientsDrinks } from '../services/httpsApiRecipes';
+import Header from '../components/generics/header/Header';
+import Footer from '../components/generics/Footer';
 import RecipeAppContext from '../context/RecipeAppContext';
 
 function ExploreIngredientDrinks() {

@@ -25,9 +25,9 @@ function Routes() {
         <Route exact path="/">
           <Login />
         </Route>
-        <Route path="/explore/drinks/nationalities">
+        {/* <Route path="/explore/drinks/nationalities">
           <NotFound />
-        </Route>
+        </Route> */}
         <Route path="/explore/foods/nationalities">
           <ExploreNationality />
         </Route>

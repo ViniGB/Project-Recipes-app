@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import RecipeContext from '../context/RecipeAppContext';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '../components/generics/header/Header';
+import Footer from '../components/generics/Footer';
 import {
   fecthNacionality,
   fecthPlace,
-  fecthRandomPlace } from '../requisitions/apiRecipes';
+  fecthRandomPlace } from '../services/httpsApiRecipes';
 
 function ExploreNationality() {
   const MAX = 12;

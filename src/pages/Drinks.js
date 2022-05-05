@@ -2,11 +2,11 @@ import React, { useContext, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import RecipeContext from '../context/RecipeAppContext';
 import getDatabase from '../helpers/getDatabase';
-import Cards from '../components/Cards';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import { getAllDrinks, getCategoryDrinks } from '../requisitions/apiRecipes';
-import ButtonCategorys from '../components/ButtonCategorys';
+import Cards from '../components/generics/Cards';
+import Header from '../components/generics/header/Header';
+import Footer from '../components/generics/Footer';
+import { getAllDrinks, getCategoryDrinks } from '../services/httpsApiRecipes';
+import ButtonCategorys from '../components/generics/ButtonCategorys';
 
 function Drinks() {
   const location = useLocation();

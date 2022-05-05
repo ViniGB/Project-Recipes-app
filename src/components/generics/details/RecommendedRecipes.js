@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import { handlePreviousCards, handleNextCards } from '../helpers/handleCardsCarousel';
-import { getAllDrinks, getAllFoods } from '../requisitions/apiRecipes';
-import './RecommendedRecipes.css';
+import { handlePreviousCards, handleNextCards } from '../../../helpers/handleCardsCarousel';
+import { getAllDrinks, getAllFoods } from '../../../services/httpsApiRecipes';
 
 const TWO = 2;
 const FOUR = 4;

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import RecipeContext from '../context/RecipeAppContext';
+import RecipeContext from '../../context/RecipeAppContext';
 
 const DONE_RECIPES = '/done-recipes';
 const FAVORITE_RECIPES = '/favorite-recipes';

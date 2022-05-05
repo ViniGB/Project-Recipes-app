@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
-import RecipeContext from '../context/RecipeAppContext';
+import RecipeContext from '../../context/RecipeAppContext';
 import {
   getAllDrinks,
   getAllFoods,
   getDrinksByCategory,
   getMealsByCategory,
-} from '../requisitions/apiRecipes';
+} from '../../services/httpsApiRecipes';
 
 const TWELVE = 12;
 
