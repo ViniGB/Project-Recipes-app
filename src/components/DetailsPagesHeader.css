@@ -1,9 +1,0 @@
-.details-page {
-  display: flex;
-  flex-direction: column;
-}
-
-.recipe-img {
-  height: 200px;
-  width: 360px;
-}
