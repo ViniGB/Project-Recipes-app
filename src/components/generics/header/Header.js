@@ -17,8 +17,7 @@ function Header() {
     history.push('/profile');
   };
 
-  const handleSearchClick = () => (!searchInput
-    ? setSearchInput(true) : setSearchInput(false));
+  const handleSearchClick = () => (!searchInput ? setSearchInput(true) : setSearchInput(false));
 
   useEffect(() => {
     const foundTitle = getTestTitle(location.pathname);
@@ -47,14 +46,14 @@ function Header() {
                     {title}
                   </h2>
                 </div>
-                <div className="hidden sm:block sm:ml-6">
+                <div className="hidden sm:block sm:ml-6 ">
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center justify-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {searchButton
                   && (
                     <Disclosure.Button
-                      className="bg-transparent p-1 rounded-full text-brand-buttonText transition-colors hover:bg-brand-tertiary focus:outline-none focus:ring-2 focus:ring-offset-brand-background focus:ring-brand-highlight"
+                      className="bg-transparent p-1 rounded-full text-brand-buttonText transition-colors hover:bg-brand-tertiary focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-black"
                     >
                       <MagnifyingGlass size={30} />
                     </Disclosure.Button>
