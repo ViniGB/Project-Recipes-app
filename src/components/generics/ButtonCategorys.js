@@ -59,28 +59,36 @@ function ButtonCategorys() {
   };
 
   return (
-    <div>
-      { categorysData
-        && categorysData.map((category, index) => (
-          <div key={ index }>
+    <div className="max-w-7xl m-2">
+      <div className="max-w-2xl">
+        <h2 className="text-2xl font-extrabold text-white">Categorys:</h2>
+        <div className="mt-1 space-y-0 grid grid-cols-3 sm:grid sm:grid-flow-col sm:grid-rows-1 sm:gap-1">
+          {categorysData
+            && categorysData.map((category, index) => (
+              <div key={index}>
+                <button
+                  type="button"
+                  id={index}
+                  data-testid={`${category.strCategory}-category-filter`}
+                  value={category.strCategory}
+                  onClick={({ target: { value } }) => handleClick(value)}
+                  className="py-2 px-4 border border-transparent text-sm m-2 font-medium rounded-md text-brand-buttonText bg-brand-highlight hover:bg-brand-tertiary focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-black transition-colors"
+                >
+                  {category.strCategory}
+                </button>
+              </div>))}
+
+          <div>
             <button
               type="button"
-              id={ index }
-              data-testid={ `${category.strCategory}-category-filter` }
-              value={ category.strCategory }
-              onClick={ ({ target: { value } }) => handleClick(value) }
+              data-testid="All-category-filter"
+              onClick={() => setForData(TWELVE)}
+              className="py-2 px-4 border border-transparent text-sm m-2 font-medium rounded-md text-brand-buttonText bg-brand-highlight hover:bg-brand-tertiary focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-black transition-colors"
             >
-              {category.strCategory}
+              All Recipes
             </button>
-          </div>))}
-      <div>
-        <button
-          type="button"
-          data-testid="All-category-filter"
-          onClick={ () => setForData(TWELVE) }
-        >
-          All Recipes
-        </button>
+          </div>
+        </div>
       </div>
     </div>
   );
