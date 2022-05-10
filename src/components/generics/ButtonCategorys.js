@@ -62,7 +62,7 @@ function ButtonCategorys() {
     <div className="max-w-7xl m-2">
       <div className="max-w-2xl">
         <h2 className="text-2xl font-extrabold text-white">Categorys:</h2>
-        <div className="mt-1 space-y-0 grid grid-cols-3 sm:grid sm:grid-flow-col sm:grid-rows-1 sm:gap-1">
+        <div className="mt-1 space-y-0 grid grid-cols-3 sm:grid sm:grid-cols-none sm:grid-flow-col sm:grid-rows-1 sm:gap-1">
           {categorysData
             && categorysData.map((category, index) => (
               <div key={index}>
