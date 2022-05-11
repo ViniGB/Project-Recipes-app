@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { handlePreviousCards, handleNextCards } from '../../../helpers/handleCardsCarousel';
 import { getAllDrinks, getAllFoods } from '../../../services/httpsApiRecipes';
 
@@ -26,84 +25,87 @@ function RecommendedRecipes() {
   }, [pathname]);
 
   return (
-    <div className="carousel-container">
-      <h3>Recommended</h3>
-      <div className="recommended-cards">
-        { recommendedRecipes.map((recipe, index) => (
+    <div className="carousel slide relative" data-bs-ride="carousel">
+      <h3 className="text-2xl font-extrabold tracking-tight text-white">Recommended</h3>
+      <div className="carousel-inner relative w-full overflow-hidden">
+        {recommendedRecipes.map((recipe, index) => (
           <div
             className={
               (cardIndex === index || cardIndex + 1 === index)
                 ? 'active-card-slides'
-                : 'card-slides'
+                : 'card-slides carousel-item relative float-left w-full'
             }
-            data-testid={ `${index}-recomendation-card` }
-            key={ index }
+            data-testid={`${index}-recomendation-card`}
+            key={index}
           >
-            <Link to={ `${pathname}/${recipe.idMeal}` }>
-              <div className="recommended-card">
-                <img
-                  className="recommended-images"
-                  data-testid={ `${index}-card-img` }
-                  src={ pathname.includes('foods')
-                    ? recipe.strDrinkThumb
-                    : recipe.strMealThumb }
-                  alt={ `${index}-drink` }
-                />
-                <span>{ recipe.strCategory }</span>
+            <div className="">
+              <img
+                className="w-full h-full object-center object-cover"
+                data-testid={`${index}-card-img`}
+                src={pathname.includes('foods')
+                  ? recipe.strDrinkThumb
+                  : recipe.strMealThumb}
+                alt={`${index}-drink`}
+              />
+              <div className="carousel-caption hidden md:block absolute text-center">
+                <span className="text-sm text-white">{recipe.strCategory}</span>
                 <h2
-                  data-testid={ `${index}-recomendation-title` }
+                  data-testid={`${index}-recomendation-title`}
+                  className="text-sm text-white"
                 >
-                  { pathname.includes('foods')
+                  {pathname.includes('foods')
                     ? recipe.strDrink
-                    : recipe.strMeal }
+                    : recipe.strMeal}
                 </h2>
               </div>
-            </Link>
+            </div>
           </div>
-        )) }
-
-        <button
-          type="button"
-          className="previous"
-          onClick={ () => handlePreviousCards(cardIndex, setCardIndex) }
-        >
-          &#10094;
-        </button>
-        <button
-          type="button"
-          className="next"
-          onClick={ () => handleNextCards(cardIndex, setCardIndex) }
-        >
-          &#10095;
-        </button>
-
+        ))}
       </div>
-      <div className="dot-section">
+
+      <button
+        type="button"
+        className="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+        onClick={() => handlePreviousCards(cardIndex, setCardIndex)}
+      >
+        <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        type="button"
+        className="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+        onClick={() => handleNextCards(cardIndex, setCardIndex)}
+      >
+        <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+
+      <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
         <button
-          className="dot-buttons"
+          className=""
           type="button"
-          onClick={ () => setCardIndex(0) }
+          onClick={() => setCardIndex(0)}
         >
           <span
-            className={ cardIndex === 0 ? DOT_ACTIVE : 'dot' }
+            className={cardIndex === 0 ? DOT_ACTIVE : 'dot'}
           />
         </button>
         <button
-          className="dot-buttons"
+          className=""
           type="button"
-          onClick={ () => setCardIndex(TWO) }
+          onClick={() => setCardIndex(TWO)}
         >
           <span
-            className={ cardIndex === TWO ? DOT_ACTIVE : 'dot' }
+            className={cardIndex === TWO ? DOT_ACTIVE : 'dot'}
           />
         </button>
         <button
-          className="dot-buttons"
+          className=""
           type="button"
-          onClick={ () => setCardIndex(FOUR) }
+          onClick={() => setCardIndex(FOUR)}
         >
           <span
-            className={ cardIndex === FOUR ? DOT_ACTIVE : 'dot' }
+            className={cardIndex === FOUR ? DOT_ACTIVE : 'dot'}
           />
         </button>
       </div>

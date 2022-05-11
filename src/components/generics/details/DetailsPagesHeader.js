@@ -21,32 +21,46 @@ function DetailsPagesHeader() {
 
   return (detailsData.length === 1
     ? (
-      <div>
-        <img
-          className="recipe-img"
-          src={ pathname.includes('foods')
-            ? detailsData[0].strMealThumb
-            : detailsData[0].strDrinkThumb }
-          data-testid="recipe-photo"
-          alt="recipe-img"
-        />
+      <>
+        <div className="sm:overflow-hidden">
+          <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-xl lg:px-8">
+            <img
+              className="rounded-lg w-full h-full object-center object-cover"
+              src={pathname.includes('foods')
+                ? detailsData[0].strMealThumb
+                : detailsData[0].strDrinkThumb}
+              data-testid="recipe-photo"
+              alt="recipe-img"
+            />
 
-        <div className="details-page">
-          <h2 data-testid="recipe-title">
-            { pathname.includes('foods')
-              ? detailsData[0].strMeal
-              : detailsData[0].strDrink }
-          </h2>
+            <div className="grid grid-cols-2">
+              <h1
+                data-testid="recipe-title"
+                className="ml-2 text-2xl font-extrabold tracking-tight text-white sm:text-3xl"
+              >
+                {pathname.includes('foods')
+                  ? detailsData[0].strMeal
+                  : detailsData[0].strDrink}
+              </h1>
+              <div className="flex flex-1 justify-end">
+                <DetailsHeaderButtons />
+              </div>
+              <span
+                data-testid="recipe-category"
+                className='ml-2'
+              >
+                {pathname.includes('foods')
+                  ? `Category: ${detailsData[0].strCategory}`
+                  : `Category: ${detailsData[0].strAlcoholic}`}
+              </span>
+            </div>
 
-          <DetailsHeaderButtons />
 
-          <span data-testid="recipe-category">
-            { pathname.includes('foods')
-              ? detailsData[0].strCategory
-              : detailsData[0].strAlcoholic }
-          </span>
+
+
+          </div>
         </div>
-      </div>)
+      </>)
     : null);
 }
 

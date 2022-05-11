@@ -40,6 +40,8 @@ function Cards() {
                   key={index}
                   data-testid={`${index}-recipe-card`}
                   className="group relative"
+                  data-mdb-ripple="true"
+                  data-mdb-ripple-color="dark"
                 >
                   <div className="w-full min-h-80 bg-brand-background aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
                     <img

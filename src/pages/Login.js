@@ -79,6 +79,8 @@ function Login() {
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-brand-buttonText bg-brand-secondary hover:bg-brand-highlight focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0f0e17] focus:ring-brand-highlight disabled:opacity-50 disabled:hover:bg-brand-button transition-colors"
                 disabled={disabledButton}
                 onClick={handleClick}
+                data-mdb-ripple="true"
+                data-mdb-ripple-color="dark"
               >
                 Enter
               </button>

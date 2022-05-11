@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, Fragment } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import handleUrlCopy from '../../../helpers/detailsHeaderHelpers';
-import shareIcon from '../../../images/shareIcon.svg';
 import whiteHeartIcon from '../../../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../../../images/blackHeartIcon.svg';
 import RecipeContext from '../../../context/RecipeAppContext';
@@ -10,9 +9,11 @@ import {
   addOrRemoveLocalStorageRecipe,
   setFavoriteIconColor,
 } from '../../../helpers/setFavoriteRecipe';
+import { ShareNetwork } from 'phosphor-react';
+import { Dialog, Transition } from '@headlessui/react'
+
 
 function DetailsHeaderButtons() {
-  const [isLinkCopied, setLinkCopied] = useState(false);
   const [favIcon, setFavIcon] = useState(whiteHeartIcon);
   const { dataById } = useContext(RecipeContext);
   const location = useLocation();
@@ -20,6 +21,11 @@ function DetailsHeaderButtons() {
   const { id } = useParams();
   const currId = id;
   const favoriteRecipe = setFavoriteRecipe(pathname, currId, dataById);
+  const [isOpen, setIsOpen] = useState(false)
+
+  function closeModal() {
+    setIsOpen(false)
+  }
 
   useEffect(() => {
     const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
@@ -41,36 +47,76 @@ function DetailsHeaderButtons() {
   };
 
   return (
-    <div>
-      <div>
-        <button
-          type="button"
-          className="share-btn"
-          onClick={ () => handleUrlCopy(pathname, currId, setLinkCopied) }
-        >
-          <img
-            className="share-icon"
-            src={ shareIcon }
-            alt="share-icon"
-            data-testid="share-btn"
-          />
-        </button>
-        <button
-          type="button"
-          className="favorite-btn"
-          onClick={ handleFavoriteClick }
-        >
-          <img
-            className="favorite-icon"
-            data-testid="favorite-btn"
-            src={ favIcon }
-            alt="favorite-icon"
-          />
-        </button>
-      </div>
+    <>
+      <button
+        type="button"
+        className="share-btn"
+        onClick={() => handleUrlCopy(pathname, currId, setIsOpen)}
+      >
+        <ShareNetwork size={32} />
+      </button>
+      <button
+        type="button"
+        className="bg-transparent p-1 rounded-full text-brand-buttonText"
+        onClick={handleFavoriteClick}
+      >
+        <img
+          className="favorite-icon"
+          data-testid="favorite-btn"
+          src={favIcon}
+          alt="favorite-icon"
+        />
+      </button>
 
-      { isLinkCopied ? <span>Link copied!</span> : null }
-    </div>
+      <Transition appear show={isOpen} as={Fragment}>
+        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black bg-opacity-25" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 overflow-y-auto">
+            <div className="flex min-h-full items-center justify-center p-4 text-center">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Dialog.Panel className="w-full sm:w-48 max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-center align-middle shadow-xl transition-all">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg font-medium leading-6 text-gray-900"
+                  >
+                    Link copied!
+                  </Dialog.Title>
+
+                  <div className="mt-4">
+                    <button
+                      type="button"
+                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      onClick={closeModal}
+                    >
+                      Got it, thanks!
+                    </button>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
+    </>
   );
 }
 
