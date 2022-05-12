@@ -12,7 +12,7 @@ function StartRecipeButton() {
   const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
   const currId = id;
 
-  useEffect(() => {
+  useEffect(() => { 
     if (doneRecipes) {
       const checkRecipeById = doneRecipes
         .some((recipe) => Number(recipe.id) === Number(currId));
@@ -24,7 +24,7 @@ function StartRecipeButton() {
   if (!recipeDone && !progressRecipe) {
     return (
       <button
-        className="recipe-button"
+        className="py-2 px-4 border border-transparent text-sm m-2 font-medium rounded-md text-brand-buttonText bg-brand-highlight hover:bg-brand-tertiary focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-black transition-colors"
         type="button"
         data-testid="start-recipe-btn"
         onClick={ pathname.includes('foods')
@@ -39,7 +39,7 @@ function StartRecipeButton() {
   if (!recipeDone && progressRecipe) {
     return (
       <button
-        className="recipe-button"
+        className="py-2 px-4 border border-transparent text-sm m-2 font-medium rounded-md text-brand-buttonText bg-brand-highlight hover:bg-brand-tertiary focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-black transition-colors"
         type="button"
         data-testid="start-recipe-btn"
         onClick={ pathname.includes('foods')

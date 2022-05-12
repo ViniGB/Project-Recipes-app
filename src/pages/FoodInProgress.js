@@ -121,6 +121,7 @@ function FoodInProgress() {
           data-testid="finish-recipe-btn"
           disabled={ disabledFinishButton }
           onClick={ handleFinish }
+          className="py-2 px-4 border border-transparent text-sm m-2 font-medium rounded-md text-brand-buttonText bg-brand-highlight hover:bg-brand-tertiary focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-black transition-colors"
         >
           Finish Recipe
         </button>

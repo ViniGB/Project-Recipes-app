@@ -25,33 +25,33 @@ function RecommendedRecipes() {
   }, [pathname]);
 
   return (
-    <div className="carousel slide relative" data-bs-ride="carousel">
-      <h3 className="text-2xl font-extrabold tracking-tight text-white">Recommended</h3>
-      <div className="carousel-inner relative w-full overflow-hidden">
+    <div className="carousel slide relative max-w-2xl mx-auto py-16 px-4 sm:py-9 sm:px-6 lg:px-8" data-bs-ride="carousel">
+      <h3 className="text-2xl font-extrabold tracking-tight text-white mb-2">Recommended</h3>
+      <div className="carousel-inner relative mx-auto items-center justify-center overflow-hidden grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2">
         {recommendedRecipes.map((recipe, index) => (
           <div
             className={
               (cardIndex === index || cardIndex + 1 === index)
-                ? 'active-card-slides'
-                : 'card-slides carousel-item relative float-left w-full'
+                ? 'active-card-slides mx-auto items-center'
+                : 'card-slides carousel-item mx-auto items-center'
             }
             data-testid={`${index}-recomendation-card`}
             key={index}
           >
-            <div className="">
+            <div className="w-full min-h-80 mx-auto items-center bg-brand-background aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
               <img
-                className="w-full h-full object-center object-cover"
+                className="w-full rounded-md h-full object-center object-cover"
                 data-testid={`${index}-card-img`}
                 src={pathname.includes('foods')
                   ? recipe.strDrinkThumb
                   : recipe.strMealThumb}
                 alt={`${index}-drink`}
               />
-              <div className="carousel-caption hidden md:block absolute text-center">
-                <span className="text-sm text-white">{recipe.strCategory}</span>
+              <div className="grid grid-cols-1 text-center sm:absolute sm:text-right sm:grid-cols-2 lg:grid-cols-2 gap-y-1 gap-x-1 xl:gap-x-8">
+                <span className="mt-1 text-lg sm:ml-2 text-white">{recipe.strCategory}</span>
                 <h2
                   data-testid={`${index}-recomendation-title`}
-                  className="text-sm text-white"
+                  className="text-lg sm:mt-1 text-white"
                 >
                   {pathname.includes('foods')
                     ? recipe.strDrink

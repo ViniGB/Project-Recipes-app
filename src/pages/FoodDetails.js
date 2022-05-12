@@ -37,10 +37,10 @@ function FoodDetails() {
         <div className="mx-auto pt-6">
           <DetailsPagesHeader />
           <div>
-            <div className="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
+            <div className="max-w-2xl mx-auto sm:pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
               {/* Ingredients and Instruction */}
               <div className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-                <div className="mt-10">
+                <div className="sm:mt-10">
                   <h2 className="text-xl font-medium text-white">Ingredients</h2>
                   <div className="mt-4">
                     <ul role="list" className="pl-4 list-disc text-sm space-y-2">
@@ -61,7 +61,6 @@ function FoodDetails() {
 
                 <div className="mt-10">
                   <h2 className="text-xl font-medium text-white">Instructions</h2>
-
                   <div className="mt-4 space-y-6">
                     <p className="text-sm text-white">{detailsData[0].strInstructions}</p>
                   </div>
@@ -82,10 +81,12 @@ function FoodDetails() {
                 </div>
               </div>
             </div>
-            
+
             {/* <CarouselEx /> */}
             <RecommendedRecipes />
-            <StartRecipeButton />
+            <div className="flex flex-1 justify-center items-center">
+              <StartRecipeButton />
+            </div>
           </div>
         </div>
       </div>

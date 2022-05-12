@@ -54,10 +54,6 @@ function DetailsPagesHeader() {
                   : `Category: ${detailsData[0].strAlcoholic}`}
               </span>
             </div>
-
-
-
-
           </div>
         </div>
       </>)
