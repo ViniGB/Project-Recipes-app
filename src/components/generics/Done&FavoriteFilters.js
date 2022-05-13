@@ -65,30 +65,37 @@ function DoneAndFavoriteFilters() {
   };
 
   return (
-    <div>
-      <button
-        type="button"
-        data-testid="filter-by-all-btn"
-        onClick={ handleAllClick }
-      >
-        All
-      </button>
+    <div className="max-w-7xl mx-auto m-2">
+      <div className="max-w-2xl mx-auto">
+        <div className="mt-1 grid grid-cols-none grid-flow-col grid-rows-1 gap-1">
+          <button
+            type="button"
+            data-testid="filter-by-all-btn"
+            onClick={handleAllClick}
+            className="py-2 px-4 border border-transparent text-sm m-2 font-medium rounded-md text-brand-buttonText bg-brand-highlight hover:bg-brand-tertiary focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-black transition-colors"
+          >
+            All
+          </button>
 
-      <button
-        type="button"
-        data-testid="filter-by-food-btn"
-        onClick={ handleFoodClick }
-      >
-        Food
-      </button>
+          <button
+            type="button"
+            data-testid="filter-by-food-btn"
+            onClick={handleFoodClick}
+            className="py-2 px-4 border border-transparent text-sm m-2 font-medium rounded-md text-brand-buttonText bg-brand-highlight hover:bg-brand-tertiary focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-black transition-colors"
+          >
+            Food
+          </button>
 
-      <button
-        type="button"
-        data-testid="filter-by-drink-btn"
-        onClick={ handleDrinksClick }
-      >
-        Drinks
-      </button>
+          <button
+            type="button"
+            data-testid="filter-by-drink-btn"
+            onClick={handleDrinksClick}
+            className="py-2 px-4 border border-transparent text-sm m-2 font-medium rounded-md text-brand-buttonText bg-brand-highlight hover:bg-brand-tertiary focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-offset-transparent focus:ring-black transition-colors"
+          >
+            Drinks
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
