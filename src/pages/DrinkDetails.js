@@ -67,7 +67,7 @@ function DrinkDetails() {
             </div>
 
             <RecommendedRecipes />
-            <div className="flex flex-1 justify-center items-center">
+            <div className="mb-3 flex flex-1 justify-center items-center">
               <StartRecipeButton />
             </div>
           </div>

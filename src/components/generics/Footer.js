@@ -1,56 +1,49 @@
+import { Compass, ForkKnife, Martini } from 'phosphor-react';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import drinkIcon from '../../images/drinkIcon.svg';
-import exploreIcon from '../../images/exploreIcon.svg';
-import mealIcon from '../../images/mealIcon.svg';
 
 function Footer() {
   const history = useHistory();
 
   return (
     <footer
-      className="footer"
+      className="fixed w-full bottom-0 max-w-container mx-auto text-center bg-brand-secondary"
       data-testid="footer"
     >
-      <button
-        className="drink-btn"
-        type="button"
-        onClick={ () => history.push('/drinks') }
-      >
-        <img
-          className="drink-icon"
-          src={ drinkIcon }
-          alt="drinks-icon"
-          data-testid="drinks-bottom-btn"
-        />
-      </button>
-
-      <button
-        className="explore-btn"
-        type="button"
-        onClick={ () => history.push('/explore') }
-      >
-        <img
-          className="explore-icon"
-          src={ exploreIcon }
-          alt="explore-icon"
-          data-testid="explore-bottom-btn"
-        />
-      </button>
-
-      <button
-        className="meal-btn"
-        type="button"
-        onClick={ () => history.push('/foods') }
-      >
-        <img
-          className="meal-icon"
-          src={ mealIcon }
-          alt="food-icon"
-          data-testid="food-bottom-btn"
-        />
-      </button>
-    </footer>
+      <div className="max-w-7xl bottom-0 mx-auto px-2 sm:px-6 lg:px-8">
+        <div className="relative flex items-center justify-between h-16 pr-2">
+          <div className="flex-1 flex items-stretch justify-between">
+            <div className="">
+              <button
+                className="drink-btn"
+                type="button"
+                onClick={() => history.push('/drinks')}
+              >
+                <Martini size={50} />
+              </button>
+            </div>
+            <div className="">
+              <button
+                className="explore-btn"
+                type="button"
+                onClick={() => history.push('/explore')}
+              >
+                <Compass size={50} />
+              </button>
+            </div>
+            <div className="">
+              <button
+                className="meal-btn"
+                type="button"
+                onClick={() => history.push('/foods')}
+              >
+                <ForkKnife size={50} />
+              </button>
+            </div>
+          </div >
+      </div>
+    </div>
+        </footer>
   );
 }
 
