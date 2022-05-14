@@ -1,15 +1,13 @@
 import React, { useEffect, useState, Fragment } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import Search from './HeaderSearch';
-import profileIcon from '../../../images/profileIcon.svg';
 import { getTestTitle, getSearchButton } from '../../../helpers/getTitle';
-import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { CookingPot, DotsThreeOutline, DotsThreeOutlineVertical, MagnifyingGlass, User } from 'phosphor-react';
+import { Disclosure, Transition } from '@headlessui/react';
+import { CookingPot, MagnifyingGlass, User } from 'phosphor-react';
 
 function Header() {
   const [title, setTitle] = useState('');
   const [searchButton, setSearchButton] = useState(true);
-  const [searchInput, setSearchInput] = useState(false);
   const location = useLocation();
   const history = useHistory();
 
@@ -17,18 +15,12 @@ function Header() {
     history.push('/profile');
   };
 
-  const handleSearchClick = () => (!searchInput ? setSearchInput(true) : setSearchInput(false));
-
   useEffect(() => {
     const foundTitle = getTestTitle(location.pathname);
     const showSearchButton = getSearchButton(location.pathname);
     setTitle(foundTitle);
     setSearchButton(showSearchButton);
   }, [location]);
-
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-  }
 
   return (
     <Disclosure as="nav" className="bg-brand-secondary">
@@ -45,8 +37,6 @@ function Header() {
                   >
                     {title}
                   </h2>
-                </div>
-                <div className="hidden sm:block sm:ml-6 ">
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center justify-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
