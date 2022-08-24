@@ -1,5 +1,8 @@
 # Project Recipes App
 
+![Recipes-App](https://user-images.githubusercontent.com/92736867/186534081-3fc427bd-a6e4-4bcb-afef-8c0fc705f1cf.gif)
+
+
 - Project to develop a recipes app, using the most modern tools in React: Hooks and Context API.
 - Two APIs consumed, one for meals, other for drinks.
 - Project endeavours:
